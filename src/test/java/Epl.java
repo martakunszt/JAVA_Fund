@@ -28,13 +28,41 @@ public class Epl {
    // @AfterAll //used in big projects
 
     @Test
-    @Order(1)
+    @Order(4)
     public void checkURL(){
         driver.get(sut);
         String expectedURL = "http://e.pl/";
         String currentURL = driver.getCurrentUrl();
         Assertions.assertThat(currentURL).as("Invalid URL").isEqualTo(expectedURL); //only prints when  exected=/=actual
     }
+
+    @Test
+    @Order(1)
+    public void checkDomain(){
+        driver.get(sut);
+        String expectedUrl = "http://e.pl/";
+        String currentUrl = driver.getCurrentUrl();
+        Assertions.assertThat(currentUrl).as("Invalid URL").isEqualTo(expectedUrl);
+
+        WebElement domainClick = driver.findElement(By.xpath("/html/body/table/tbody/tr[5]/td/table/tbody/tr[1]/td[1]/table[2]/tbody/tr[4]/td/table/tbody/tr/td/table/tbody/tr[3]/td/input"));
+        //WebElement domainClick = driver.findElement(By.xpath("//input[@name='image']"));
+        domainClick.click();
+        String expectedUrlDomain = "http://e.pl/domain.html";
+        String currentUrlDomain = driver.getCurrentUrl();
+        Assertions.assertThat(currentUrlDomain).as("Invalid URL").isEqualTo(expectedUrlDomain);
+
+        WebElement fieldDomain = driver.findElement(By.name("DomainName"));
+        fieldDomain.sendKeys("Programming");
+
+        WebElement check = driver.findElement(By.xpath("/html/body/table/tbody/tr[5]/td/table/tbody/tr/td[3]/table/tbody/tr[2]/td/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[3]/td[2]/input"));
+        check.click();
+
+        //WebElement newSearch = driver.findElement(By.xpath("/html/body/table/tbody/tr[5]/td/table/tbody/tr/td[3]/table/tbody/tr[2]/td/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/input[2]"));
+        WebElement newSearch = driver.findElement(By.cssSelector("input[src = '/file/generated_02045fad7a6678ea127995bbb0a969b2.gif']"));
+        newSearch.click();
+
+    }
+
 
     @Test
     @Order(2)

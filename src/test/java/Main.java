@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
        WebDriver driver = new ChromeDriver(); //starts internet browser
-       driver.get("file:///Users/martakunsztowicz/IdeaProjects/Java_Fund/src/test/resources/index.html"); //void procedure
+       driver.get("file:///Users/martakunsztowicz/IdeaProjects/Java_Fund/src/index/index.html"); //void procedure
         System.out.println("Webpage address is :" + driver.getCurrentUrl());
         System.out.println("The title of the page is: " + driver.getTitle());
         //driver.quit(); //void procedure -> no output
@@ -37,8 +37,8 @@ public class Main {
         WebElement relXpath = driver.findElement(By.xpath("//h2[@class='relativePath']")); //finding element by xPath relative attribute
         System.out.println("This is header found by xpath relative attribute: " + relXpath.getText());
 
-        //WebElement myAtt = driver.findElement(By.cssSelector("h5[data-test-id='heading']"));
-        //System.out.println("Finding element using my own HTML attribute: " + myAtt.getText()); //for some reason this doesn't work
+        WebElement myAtt = driver.findElement(By.cssSelector("h5[data-test-id='heading']"));
+        System.out.println("Finding element using my own HTML attribute: " + myAtt.getText()); //for some reason this doesn't work
 
         driver.quit();
 

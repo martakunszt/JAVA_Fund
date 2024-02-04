@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
+
 public class TestPage
 {
     public static void main(String[] args) {
@@ -18,12 +19,16 @@ public class TestPage
         System.out.println(findDiv.getText());
 
         List<WebElement> divObjs = driver.findElements(By.tagName("div"));
+
+        int counter = 1;
         for (WebElement object:divObjs){
+            System.out.println(counter);
             System.out.println("This is a tag name: " + object.getTagName());
             System.out.println("This is a name attribute: " + object.getAttribute("name"));
             System.out.println("This is a class attribute: " + object.getAttribute("class"));
             System.out.println("This is an id: " + object.getAttribute("id"));
-
+            System.out.println("-------------------------------------------------------------------");
+            counter++;
         }
 
         driver.quit();

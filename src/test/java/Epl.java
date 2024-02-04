@@ -1,10 +1,10 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.*;
+import io.github.bonigarcia.wdm.WebDriverManager; //importing WebDriver Manager
+import org.junit.jupiter.api.*; //importing Jupiter
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.assertj.core.api.Assertions; //adding assertions library
-import java.time.Duration; //to add wait
+import java.time.Duration; //to add wait/timeouts etc
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Epl {

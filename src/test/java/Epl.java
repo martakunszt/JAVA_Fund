@@ -3,11 +3,12 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.assertj.core.api.Assertions; //adding assertions library
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Epl {
     private static WebDriver driver;
-    String sut = "http://e.pl";
+    String sut = "http://e.pl/";
     @BeforeAll
     static void setupClass(){
         WebDriverManager.chromedriver().setup(); //resolves any conflicts with drivers and browser's version
@@ -27,6 +28,15 @@ public class Epl {
    // @AfterAll //used in big projects
 
     @Test
+    @Order(1)
+    public void checkURL(){
+        driver.get(sut);
+        String expectedURL = "http://e.pl/";
+        String currentURL = driver.getCurrentUrl();
+        Assertions.assertThat(currentURL).as("Invalid URL").isEqualTo(expectedURL); //only prints when  exected=/=actual
+    }
+
+    @Test
     @Order(2)
     public void openPage() {
         driver.getTitle();
@@ -36,7 +46,7 @@ public class Epl {
 
     // clicking on the menu
     @Test
-    @Order(1)
+    @Order(3)
     public void clickMenu(){
         driver.get(sut);
 

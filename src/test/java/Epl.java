@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.assertj.core.api.Assertions; //adding assertions library
+import java.time.Duration; //to add wait
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Epl {
@@ -60,6 +61,8 @@ public class Epl {
         //WebElement newSearch = driver.findElement(By.xpath("/html/body/table/tbody/tr[5]/td/table/tbody/tr/td[3]/table/tbody/tr[2]/td/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/input[2]"));
         WebElement newSearch = driver.findElement(By.cssSelector("input[src = '/file/generated_02045fad7a6678ea127995bbb0a969b2.gif']"));
         newSearch.click();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
     }
 
